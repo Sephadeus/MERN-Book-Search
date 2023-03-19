@@ -1,3 +1,5 @@
+![badge](https://img.shields.io/badge/javascript-94.1%25-orange)
+
 # MERN-Book-Search
 
 ## Description
