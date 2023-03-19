@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:3001",
-  "homepage": ".",
+  "homepage": "https://safe-reaches-99368.herokuapp.com",
   "dependencies": {
     "@apollo/client": "^3.7.10",
     "@testing-library/jest-dom": "^4.2.4",
