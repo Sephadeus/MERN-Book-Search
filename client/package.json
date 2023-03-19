@@ -2,7 +2,8 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3000",
+  "proxy": "http://localhost:3001",
+  "homepage": ".",
   "dependencies": {
     "@apollo/client": "^3.7.10",
     "@testing-library/jest-dom": "^4.2.4",
