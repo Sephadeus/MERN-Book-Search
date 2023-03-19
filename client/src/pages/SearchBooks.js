@@ -4,7 +4,7 @@ import { Container, Col, Form, Button, Card, Row } from "react-bootstrap";
 import Auth from "../utils/auth";
 // import { saveBook, searchGoogleBooks } from '../utils/API';
 import { saveBookIds, getSavedBookIds } from "../utils/localStorage";
-import { SAVE_BOOK } from "../utils/mutation";
+import { SAVE_BOOK } from "../utils/mutations";
 import { useMutation } from "@apollo/client";
 
 const SearchBooks = () => {
@@ -61,10 +61,13 @@ const SearchBooks = () => {
   // create function to handle saving a book to our database
   const handleSaveBook = async (bookId) => {
     // find the book in `searchedBooks` state by the matching id
+    console.log(searchedBooks);
     const bookToSave = searchedBooks.find((book) => book.bookId === bookId);
 
+    console.log(bookToSave);
     // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
+    console.log(token);
 
     if (!token) {
       return false;
@@ -76,10 +79,10 @@ const SearchBooks = () => {
           input: bookToSave
         }
       });
-
-      if (!response.ok) {
-        throw new Error("something went wrong!");
-      }
+ console.log(response);
+      // if (!response.ok) {
+      //   throw new Error("something went wrong!");
+      // }
 
       // if book successfully saves to user's account, save book id to state
       setSavedBookIds([...savedBookIds, bookToSave.bookId]);
@@ -90,7 +93,7 @@ const SearchBooks = () => {
 
   return (
     <>
-      <div fluid className="text-light bg-dark pt-5">
+      <div fluid="true" className="text-light bg-dark pt-5">
         <Container>
           <h1>Search for Books!</h1>
           <Form onSubmit={handleFormSubmit}>
@@ -124,7 +127,7 @@ const SearchBooks = () => {
         <Row>
           {searchedBooks.map((book) => {
             return (
-              <Col md="4">
+              <Col key={book.bookId} md="4">
                 <Card key={book.bookId} border="dark">
                   {book.image ? (
                     <Card.Img
